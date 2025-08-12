@@ -1,0 +1,38 @@
+<!-- Bouton flottant avec icône -->
+<button id="toggle-chat" title="Discuter avec l'IA" *ngIf="!chatVisible" (click)="showChat()">
+  <img src="assets/ai2.png" alt="IA Icon">
+</button>
+
+<!-- Fenêtre de discussion -->
+<div class="chat-container" id="chat-box" *ngIf="chatVisible">
+  <div class="chat-header">
+    IA DQSC
+    <div  style="display: flex; gap: 15px;">
+      <span (click)="addfile()" id="close-chat" *ngIf="isAdmin"> 
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+          <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+          <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
+        </svg>
+      </span>
+      <span (click)="hideChat()" id="close-chat">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+          <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+        </svg>
+      </span>
+    </div>
+  </div>
+
+  <div class="chat-messages" id="chat-messages" #chatMessage>
+    <div *ngFor="let msg of messages" [ngClass]="msg.sender === 'user' ? 'message sent' : 'message received'">
+      {{ msg.text }}
+    </div>
+  </div>
+
+  <div class="chat-input">
+    <input type="text" [(ngModel)]="userMessage" placeholder="Poser une question" (keyup.enter)="sendMessage()">
+    <button class="send-btn" (click)="sendMessage()">
+      <img src="assets/send-w.png" alt="Envoyer" class="send-icon">
+    </button>
+  </div>
+</div>
+

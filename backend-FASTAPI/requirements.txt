@@ -1,0 +1,29 @@
+# FastAPI et serveur
+fastapi==0.116.1
+uvicorn[standard]==0.35.0
+
+# LangChain et extensions
+langchain==0.3.26
+langchain-community==0.3.27
+langchain-huggingface==0.0.3
+langchain-qdrant==0.2.0
+
+# Embeddings et NLP
+sentence-transformers==5.0.0
+transformers==4.53.3
+
+# Qdrant (vector database)
+qdrant-client==1.15.0
+
+# Google Generative AI
+google-generativeai==0.8.5
+google-genai==1.27.0
+
+# FastAPI Middleware et validation
+pydantic==2.11.7
+aiofiles==24.1.0
+
+# Outils divers
+requests==2.32.4
+httpx==0.28.1
+

@@ -1,0 +1,20 @@
+<div class="overlay">
+  <div class="card">
+    <h2>Ajouter un fichier</h2>
+
+    <input type="file" (change)="onFileSelected($event)" />
+    <br>
+    <button (click)="upload()" [disabled]="!selectedFile || isUploading">
+      Envoyer
+    </button>
+    <button (click)="reset()" [disabled]="isUploading">Réinitialiser</button>
+
+    <div *ngIf="isUploading || progress > 0" class="progress">
+      <div class="bar" [style.width.%]="progress"></div>
+    </div>
+
+    <p *ngIf="serverPath">Chemin renvoyé par le backend : <code>{{ serverPath }}</code></p>
+    <p *ngIf="errorMsg" class="error">{{ errorMsg }}</p>
+    <button (click)="fermerModal()">Fermer</button>
+  </div>
+</div>
